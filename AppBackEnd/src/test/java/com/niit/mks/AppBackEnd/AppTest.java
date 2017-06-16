@@ -1,4 +1,4 @@
-package com.niit.mks.AppRestServices;
+package com.niit.mks.AppBackEnd;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

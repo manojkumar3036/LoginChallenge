@@ -7,7 +7,7 @@ public class ApplicationInitliazer extends AbstractAnnotationConfigDispatcherSer
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 		// TODO Auto-generated method stub
-		return new Class[]{WebConfiguration.class};
+		return new Class[]{WebConfiguration.class,DatabaseConfig.class};
 	}
 
 	@Override
@@ -21,5 +21,6 @@ public class ApplicationInitliazer extends AbstractAnnotationConfigDispatcherSer
 		// TODO Auto-generated method stub
 		return new String[]{"/"};
 	}
+
 
 }

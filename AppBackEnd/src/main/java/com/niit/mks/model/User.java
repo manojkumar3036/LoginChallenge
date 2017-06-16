@@ -1,30 +1,55 @@
 package com.niit.mks.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
+@Entity
+@Component
+@Table
 public class User {
+	// declaring attributes
 	
+	@Id
 	private int id;
-	private String userName;
-	private String userPassword;
+	private String firstName;
+	private String lastName;
+	private String emailId;
+	private String password;
+	
+	// generating getters and setters
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getUserName() {
-		return userName;
+	public String getFirstName() {
+		return firstName;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
-	public String getUserPassword() {
-		return userPassword;
+	public String getLastName() {
+		return lastName;
 	}
-	public void setUserPassword(String userPassword) {
-		this.userPassword = userPassword;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
-	
+	public String getEmailId() {
+		return emailId;
+	}
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	
 	
 	

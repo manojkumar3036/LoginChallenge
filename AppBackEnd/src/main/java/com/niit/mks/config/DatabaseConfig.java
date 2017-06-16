@@ -12,15 +12,18 @@ import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+/**
+ * Hello world!
+ *
+ */
 @Configuration
 @EnableTransactionManagement
-public class DatabaseConfiguration {
-	
-	
-	private final static String JDBC_URL = "jdbc:oracle:thin:@localhost:1521:orcl";
-	private final static String JDBC_DRIVER_CLASS = "oracle.jdbc.OracleDriver";
-	private final static String USER_NAME = "scott";
-	private final static String USER_PASSWORD = "abc";
+public class DatabaseConfig 
+{
+	private final static String JDBC_URL = "jdbc:h2:tcp://localhost/~/test";
+	private final static String JDBC_DRIVER_CLASS = "org.h2.Driver";
+	private final static String USER_NAME = "sa";
+	private final static String USER_PASSWORD = "";
 
 	@Bean
 	public DataSource getDataSource() {
@@ -43,10 +46,10 @@ public class DatabaseConfiguration {
 	private Properties hibernateProperties() {
 		Properties properties = new Properties();
 
-		properties.put("hibernate.dialect", "org.hibernate.dialect.OracleDialect");
+		properties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
 		properties.put("hibernate.show_sql", "true");
 		properties.put("hibernate.format_sql", "true");
-		properties.put("hibernate.hbm2ddl.auto", "update");
+		properties.put("hibernate.hbm2ddl.auto", "create");
 		properties.put("hibernate.lazy", "false");
 		return properties;
 	}
@@ -58,5 +61,4 @@ public class DatabaseConfiguration {
 		return txManager;
 
 	}
-
 }

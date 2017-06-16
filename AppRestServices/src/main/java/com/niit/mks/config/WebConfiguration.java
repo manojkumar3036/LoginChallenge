@@ -8,8 +8,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
-@ComponentScan("com.niit.mks")
 @EnableWebMvc
+@ComponentScan("com.niit.mks")
 public class WebConfiguration extends WebMvcConfigurerAdapter {
 	
 	@Bean
@@ -20,5 +20,4 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
 		viewResolver.setSuffix(".jsp");
 		return viewResolver;
 	}
-
 }
