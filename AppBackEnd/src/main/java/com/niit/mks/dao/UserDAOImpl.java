@@ -11,40 +11,31 @@ import com.niit.mks.model.User;
 
 @Repository
 @Transactional
-public class UserDAOImpl implements UserDAO{
-	
-	
+public class UserDAOImpl implements UserDAO {
+
 	@Autowired
 	SessionFactory sessionFactory;
-	
-	public UserDAOImpl(SessionFactory sessionFactory)
-	{
-		this.sessionFactory=sessionFactory;
-	}
-	
-	
 
-	public void insert(User user) {
-		
-		sessionFactory.getCurrentSession().persist(user);
-	
-		
-		
+	public UserDAOImpl(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+
+	public User insert(User user) {
+
+		sessionFactory.getCurrentSession().save(user);
+		return user;
+
 	}
 
 	public User getUserById(int id) {
-		return null;
-		
-	
-		
+		User user = (User) sessionFactory.getCurrentSession().get(User.class, id);
+		return user;
+
 	}
 
 	public List<User> getAllUsers() {
-	List<User> user=sessionFactory.getCurrentSession().createQuery("from User").list();
+		List<User> user = sessionFactory.getCurrentSession().createQuery("from User").list();
 		return user;
 	}
-	
-	
-	
 
 }
