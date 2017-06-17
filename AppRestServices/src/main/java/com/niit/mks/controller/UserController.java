@@ -22,6 +22,7 @@ public class UserController {
 	
 	@Autowired
 	UserDAO userDAO;
+	
 	@CrossOrigin(origins = "http://127.0.0.1:8887")
 	@RequestMapping(value="/adduser", method=RequestMethod.POST)
 	// client is sending the data in JSON format. This method has to convert JSON to JAVA

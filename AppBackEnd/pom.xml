@@ -18,8 +18,14 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
+			<version>4.1</version>
 			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>4.3.1.Final</version>
 		</dependency>
 
 
@@ -48,13 +54,13 @@
 			<artifactId>spring-orm</artifactId>
 			<version>4.3.4.RELEASE</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<version>1.4.196</version>
 		</dependency>
 
-	
+
 	</dependencies>
 </project>
