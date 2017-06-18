@@ -1,4 +1,12 @@
-<div>
+<div class="hashLoginContainer">
+  <div class="hashLoginoverlayContainer">
+    <div class="hashBrandlogo">
+        <img src="public/images/hashlogo.png" alt="Hash" title="hash logo">
+        <p class="hashwelcomenote"> Welcome to # Connect</p>
+        <p class="hashwelcometag">Community | Groups | Network</p>
+    </div>
+  <div class="hashLoginwrapper">
+    <div class="hashFormbox">
 <form name="regForm">
   <!--FIRST NAME-->
   <div class="form-group">
@@ -13,24 +21,24 @@
   <input type="text" name="userName" placeholder="Username" class="form-control" ng-model="register.userName" required="" ng-minlength="8">
   </div>
   <div ng-show="regForm.$submitted || regForm.userName.$touched">
-  <span ng-show="regForm.userName.$error.required">This field is required</span>
-  <span ng-show="regForm.userName.$error.minlength">The username should be more then 8 character</span>
+  <span ng-show="regForm.userName.$error.required" class="hasherrormsg">This field is required</span>
+  <span ng-show="regForm.userName.$error.minlength" class="hasherrormsg">The username should be more then 8 character</span>
   </div>
   <!--EMAIL-->
   <div class="form-group" ng-class="{ 'has-error' : regForm.emailId.$invalid }">
   <input type="email" name="emailId" placeholder="Email" class="form-control" ng-model="register.emailId" required="">
   </div>
   <div ng-show="regForm.$submitted || regForm.emailId.$touched">
-    <span ng-show="regForm.emailId.$error.required">Tell us your email.</span>
-    <span ng-show="regForm.emailId.$invalid">This is not a valid email.</span>
+    <span ng-show="regForm.emailId.$error.required" class="hasherrormsg">Tell us your email.</span>
+    <span ng-show="regForm.emailId.$invalid" class="hasherrormsg">This is not a valid email.</span>
   </div>
   <!--PASSWORD-->
   <div class="form-group">
   <input type="password" name="password" placeholder="Password" class="form-control" ng-model="register.password" ng-minlength="8" required="">
   </div>
   <div ng-show="regForm.$submitted || regForm.password.$touched">
-  <span ng-show="regForm.password.$error.required">This field is required</span>
-  <span ng-show="regForm.password.$error.minlength">The password should be more then 8 character</span>
+  <span ng-show="regForm.password.$error.required" class="hasherrormsg">This field is required</span>
+  <span ng-show="regForm.password.$error.minlength" class="hasherrormsg">The password should be more then 8 character</span>
   <span ng-if="passwordvalidatemsg">{{passwordvalidatemsg}}</span>
   <span ng-if="passwordinvalidatemsg">{{passwordinvalidatemsg}}</span>
   </div>
@@ -39,7 +47,10 @@
   <input type="password" placeholder="Confirm password" class="form-control" required>
   </div>
 
-  <button type="submit" ng-click="SaveData(register)">Register</button>
+  <button type="submit" ng-click="SaveData(register)" class="hashloginbutton">Register</button>
   <div>{{msg}}</div>
 </form>
+</div>
+</div>
+</div>
 </div>
