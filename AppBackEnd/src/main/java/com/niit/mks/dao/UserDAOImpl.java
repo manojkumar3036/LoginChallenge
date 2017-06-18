@@ -2,6 +2,7 @@ package com.niit.mks.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -36,6 +37,15 @@ public class UserDAOImpl implements UserDAO {
 	public List<User> getAllUsers() {
 		List<User> user = sessionFactory.getCurrentSession().createQuery("from User").list();
 		return user;
+	}
+
+	public User login(User user) {
+		Query query=sessionFactory.getCurrentSession().createQuery("from User where userName=? and password=?");
+		query.setString(0,user.getUserName());
+		query.setString(1,user.getPassword());
+		
+		User validUser=(User) query.uniqueResult();
+		return validUser;
 	}
 
 }

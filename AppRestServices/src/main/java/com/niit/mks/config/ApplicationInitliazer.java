@@ -1,5 +1,7 @@
 package com.niit.mks.config;
 
+import javax.servlet.Filter;
+
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class ApplicationInitliazer extends AbstractAnnotationConfigDispatcherServletInitializer {
@@ -20,6 +22,12 @@ public class ApplicationInitliazer extends AbstractAnnotationConfigDispatcherSer
 	protected String[] getServletMappings() {
 		// TODO Auto-generated method stub
 		return new String[]{"/"};
+	}
+	
+	@Override
+	protected Filter[] getServletFilters() {
+		Filter[] singleton = { new CORSFilter() };
+		return singleton;
 	}
 
 

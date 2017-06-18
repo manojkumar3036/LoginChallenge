@@ -50,7 +50,7 @@ public class AppTest {
 		user.setLastName("Hati");
 		user.setEmailId("sangram@gmail.com");
 		user.setPassword("abc");
-		
+		user.setUserName("sam");
 		userDAO.insert(user);
 		assertEquals("Record Inserted!!","Sangram",user.getFirstName());		
 		

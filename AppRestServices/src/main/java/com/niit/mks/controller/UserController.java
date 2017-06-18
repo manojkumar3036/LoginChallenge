@@ -23,7 +23,7 @@ public class UserController {
 	@Autowired
 	UserDAO userDAO;
 	
-	@CrossOrigin(origins = "http://127.0.0.1:8887")
+
 	@RequestMapping(value="/adduser", method=RequestMethod.POST)
 	// client is sending the data in JSON format. This method has to convert JSON to JAVA
 	public ResponseEntity<?> insertUser(@RequestBody User user)
@@ -34,7 +34,7 @@ public class UserController {
 		}catch(Exception e)
 		{
 			e.printStackTrace();
-			BaseError error=new BaseError(1,"User cannot be inserted!!" +e.getMessage());
+			BaseError error=new BaseError(2,"User cannot be inserted!!" +e.getMessage());
 			return new ResponseEntity<BaseError>(error,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
@@ -46,7 +46,7 @@ public class UserController {
 		List<User> users=userDAO.getAllUsers();	
 		if(users.isEmpty())
 		{
-			BaseError error=new BaseError(2,"There is no users");
+			BaseError error=new BaseError(1,"There is no users");
 			return new ResponseEntity<BaseError>(error,HttpStatus.NO_CONTENT);
 		}
 		else
@@ -61,7 +61,7 @@ public class UserController {
 	public ResponseEntity<?> getUser(HttpSession session)
 	{
 	
-		User user=(User) session.getAttribute("user");
+		User user=(User) session.getAttribute("user"); // only for authentication
 		if(user==null)
 		{
 			BaseError error=new BaseError(3,"unauthorized user");
@@ -71,6 +71,42 @@ public class UserController {
 		{
 			user=userDAO.getUserById(user.getId());
 			return new ResponseEntity<User>(user,HttpStatus.OK);
+		}
+		
+	}
+	
+	@RequestMapping(value="/login",method=RequestMethod.POST)
+	public ResponseEntity<?> login(@RequestBody User user,HttpSession session)
+	{
+		User validUser=userDAO.login(user);
+		if(validUser==null)
+		{
+			BaseError error=new BaseError(3,"Invalid Credentials..");
+			return new ResponseEntity<BaseError>(error,HttpStatus.UNAUTHORIZED);
+		}
+		else
+		{
+			System.out.println("Data matched");
+			session.setAttribute("user",validUser);
+			return new ResponseEntity<User>(validUser,HttpStatus.OK);
+		}
+	}
+	
+	@RequestMapping(value="/logout",method=RequestMethod.PUT)
+	public ResponseEntity<?> logOut(HttpSession session)
+	{
+		User user=(User) session.getAttribute("user");
+		if(user==null)
+		{
+			BaseError error=new BaseError(3,"Please Login..");
+			return new ResponseEntity<BaseError>(error,HttpStatus.UNAUTHORIZED);
+		}
+		else
+		{
+			user=userDAO.getUserById(user.getId());
+			session.removeAttribute("user");
+			session.invalidate();
+			return new ResponseEntity<Void>(HttpStatus.OK);
 		}
 		
 	}

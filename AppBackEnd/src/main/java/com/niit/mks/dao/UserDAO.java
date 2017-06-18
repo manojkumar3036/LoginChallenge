@@ -9,5 +9,6 @@ public interface UserDAO {
 	public User insert(User user);
 	public User getUserById(int id);
 	public List<User> getAllUsers();
+	public User login(User user);
 
 }
