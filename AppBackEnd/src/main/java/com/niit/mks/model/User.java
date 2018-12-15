@@ -96,11 +96,9 @@ public class User {
 		this.password = password;
 	}
 	
-	public String toString() {
-		return "User Email Id is"+emailId;
-	}
+	
 
-        public Strint toString() {
+        public String toString() {
 
 		return "UserEmail Id:"+emailId;
 	}
