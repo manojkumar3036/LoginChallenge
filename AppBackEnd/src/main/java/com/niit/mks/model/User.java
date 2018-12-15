@@ -102,5 +102,9 @@ public class User {
 
 		return "UserEmail Id:"+emailId;
 	}
+        
+        public String toString1() {
+        	return "errorneous message";
+        }
 
 }
