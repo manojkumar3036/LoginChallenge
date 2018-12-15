@@ -100,4 +100,9 @@ public class User {
 		return "User Email Id is"+emailId;
 	}
 
+        public Strint toString() {
+
+		return "UserEmail Id:"+emailId;
+	}
+
 }
