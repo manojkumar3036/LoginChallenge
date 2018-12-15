@@ -96,4 +96,9 @@ public class User {
 		this.password = password;
 	}
 
+        public Strint toString() {
+
+		return "UserEmail Id:"+emailId;
+	}
+
 }
