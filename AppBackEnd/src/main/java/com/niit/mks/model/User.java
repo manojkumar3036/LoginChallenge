@@ -102,5 +102,8 @@ public class User {
 
 		return "UserEmail Id:"+emailId;
 	}
+	public String toString2(){
+		return "to string method2";
+	}
 
 }
