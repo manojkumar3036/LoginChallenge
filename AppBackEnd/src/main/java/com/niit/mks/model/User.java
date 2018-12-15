@@ -107,4 +107,9 @@ public class User {
         	return "errorneous message";
         }
 
+	public String toString2(){
+		return "to string method2";
+	}
+
+
 }
