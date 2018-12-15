@@ -29,6 +29,20 @@ public class User {
 	@NotNull
 	private String password;
 	
+	@NotNull
+	private String address;
+	
+	
+	
+	
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
 	@Column(unique=true,nullable=false)
 	private String userName;
 
